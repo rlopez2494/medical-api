@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    },
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "allowJs": true,
+    "noImplicitAny": false,
+    "outDir": "dist",
+    "target": "es5",
+    "lib": [
+      "es5",
+      "es2015"
+    ],
+    "module": "commonjs",
+    "moduleResolution": "Node",
+    "sourceMap": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*", "src/**/*.vue", "**/*.d.ts"],
+  "exclude": [
+    "node_modules",
+    "tests"
+  ]
+}
