@@ -9,6 +9,11 @@ export default class User {
   phoneNumber?: string;
   password: string;
 
+  // Database fields
+  updatedAt?: string;
+  createdAt?: string;
+  token?: string;
+
   constructor({
     id = null,
     firstName = null,
@@ -16,7 +21,11 @@ export default class User {
     lastName = null,
     email = null,
     phoneNumber = null,
-    password = null
+    password = null,
+
+    updatedAt = null,
+    createdAt = null,
+    token = null,
   }) {
     this.id = id;
     this.firstName = firstName;
@@ -25,6 +34,10 @@ export default class User {
     this.email = email;
     this.phoneNumber = phoneNumber;
     this.password = password;
+
+    this.updatedAt = updatedAt;
+    this.createdAt = createdAt;
+    this.token = token;
   }
 
   validate() {
@@ -52,6 +65,9 @@ export default class User {
       email: this.email,
       phoneNumber: this.phoneNumber,
       password: this.password,
+      updatedAt: this.updatedAt,
+      createdAt: this.createdAt,
+      token: this.token,
     };
   }
 }
