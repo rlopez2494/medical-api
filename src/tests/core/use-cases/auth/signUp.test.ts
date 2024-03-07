@@ -1,5 +1,5 @@
 // Use-case
-import CreateUser from "@/core/use-cases/auth/createUser";
+import SignUp from "@/core/use-cases/auth/signUp";
 
 // Interfaces
 import UsersRepository from "@/core/interfaces/repositories/UsersRepository";
@@ -14,21 +14,10 @@ import { sequelize } from "@/infrastructure/data-providers/sql/config/sequelize"
 import { config as dotenvConfig } from "dotenv";
 
 // Mock data
-const validNewUser = {
-  id: null,
-  firstName: "Robert",
-  middleName: "Jose",
-  lastName: "Lopez",
-  email: "robert@hotmail.com",
-  password: "abcd1234",
+import { validNewUser } from "./mocks/mockData";
 
-  updatedAt: null,
-  createdAt: null,
-  token: null,
-}
-
-describe("Create User", () => {
-  let createUser: CreateUser;
+describe("Sign up", () => {
+  let createUser: SignUp;
   let usersRepository: UsersRepository;
   let passwordHasher: PasswordHasher;
 
@@ -47,7 +36,7 @@ describe("Create User", () => {
     usersRepository = new SqlUsersRepository();
     passwordHasher = new BcryptPasswordHasher();
 
-    createUser = new CreateUser({
+    createUser = new SignUp({
       usersRepository,
       passwordHasher,
     });

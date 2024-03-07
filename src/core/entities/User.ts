@@ -3,7 +3,7 @@ import validate from "validate.js";
 export default class User {
   id?: string;
   firstName: string;
-  middleName: string;
+  middleName?: string;
   lastName: string;
   email: string;
   phoneNumber?: string;

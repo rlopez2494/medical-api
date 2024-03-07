@@ -1,5 +1,5 @@
 import UsersRepository from "@/core/interfaces/repositories/UsersRepository"
-import UserDTO from "@/core/interfaces/data-transfer-objects/UserDTO"
+import UserDTO from "@/core/data-transfer-objects/UserDTO"
 
 // Sequelize Model
 import UserModel from "@/infrastructure/data-providers/sql/models/User";

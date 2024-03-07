@@ -5,16 +5,15 @@ import PasswordHasher from "@/core/interfaces/adapters/PasswordHasher";
 
 // Entities and DTOs
 import User from "@/core/entities/User";
-import UserDTO from "@/core/interfaces/data-transfer-objects/UserDTO";
+import UserDTO from "@/core/data-transfer-objects/UserDTO";
 
-export default class CreateUser {
+export default class SignUp {
   private usersRepository: UsersRepository;
   private passwordHasher: PasswordHasher;
 
   constructor({ usersRepository, passwordHasher }) {
     this.usersRepository = usersRepository;
     this.passwordHasher = passwordHasher;
-
   }
 
   async execute({ data }: { data: UserDTO }) {
