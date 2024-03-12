@@ -1,28 +1,28 @@
 import { DataTypes } from "sequelize";
 import { sequelize as db } from "@/infrastructure/data-providers/sql/config/sequelize";
 
-const Patient = db.define('Patient', {
+const Doctor = db.define('Doctor', {
   id: {
     type: DataTypes.UUID,
     defaultValue: DataTypes.UUIDV4,
     primaryKey: true
   },
-  height: {
-    type: DataTypes.INTEGER,
-    allowNull: true,
-  },
-  weight: {
-    type: DataTypes.INTEGER,
-    allowNull: true,
-  },
-  bloodType: {
+  name: {
     type: DataTypes.STRING,
-    allowNull: true,
+    allowNull: false
   },
-  emergencyContact: {
+  title: {
     type: DataTypes.STRING,
-    allowNull: true,
+    allowNull: false
   },
+  doctorId: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  userId: {
+    type: DataTypes.UUID,
+    allowNull: false
+  }
 }, {});
 
-export default Patient;
+export default Doctor;

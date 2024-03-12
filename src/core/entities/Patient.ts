@@ -2,13 +2,6 @@ import validate from "validate.js";
 
 export default class Patient {
   id?: string;
-  citizenId: string;
-  firstName: string;
-  middleName?: string;
-  lastName: string;
-  phoneNumber: string;
-  birthDate: string;
-  gender: string;
   height: number;
   weight: number;
   otherDisabilities: string[];
@@ -22,13 +15,6 @@ export default class Patient {
 
   constructor({
     id = null,
-    citizenId = null,
-    firstName = null,
-    middleName = null,
-    lastName = null,
-    phoneNumber = null,
-    birthDate = null,
-    gender = null,
     height = null,
     weight = null,
     otherDisabilities = null,
@@ -39,13 +25,6 @@ export default class Patient {
     createdAt = null,
   }) {
     this.id = id;
-    this.citizenId = citizenId;
-    this.firstName = firstName;
-    this.middleName = middleName;
-    this.lastName = lastName;
-    this.phoneNumber = phoneNumber;
-    this.birthDate = birthDate;
-    this.gender = gender;
     this.height = height;
     this.weight = weight;
     this.otherDisabilities = otherDisabilities;
@@ -63,15 +42,10 @@ export default class Patient {
 
     // 
     const constraints = {
-      // User Related Data
-      firstName: presenceTrue,
-      lastName: presenceTrue,
-      phoneNumber: presenceTrue,
-
-      // Patient Related Data
-      citizenId: presenceTrue,
-      birthDate: presenceTrue,
-      gender: presenceTrue,
+      // No validations at this point
+      weight: presenceTrue,
+      height: presenceTrue,
+      emergencyContact: presenceTrue,
     };
 
     return validate(this, constraints);
@@ -80,12 +54,6 @@ export default class Patient {
   getJSON() {
     return {
       id: this.id,
-      citizenId: this.citizenId,
-      firstName: this.firstName,
-      middleName: this.middleName,
-      lastName: this.lastName,
-      birthDate: this.birthDate,
-      gender: this.gender,
       height: this.height,
       weight: this.weight,
       otherDisabilities: this.otherDisabilities,

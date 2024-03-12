@@ -7,6 +7,7 @@ export default class User {
   lastName: string;
   email: string;
   phoneNumber?: string;
+  gender: string;
   password: string;
 
   // Database fields
@@ -21,6 +22,7 @@ export default class User {
     lastName = null,
     email = null,
     phoneNumber = null,
+    gender = null,
     password = null,
 
     updatedAt = null,
@@ -33,6 +35,7 @@ export default class User {
     this.lastName = lastName;
     this.email = email;
     this.phoneNumber = phoneNumber;
+    this.gender = gender;
     this.password = password;
 
     this.updatedAt = updatedAt;
@@ -51,6 +54,7 @@ export default class User {
       lastName: { ...presenceTrue },
       email: presenceTrue,
       password: presenceTrue,
+      gender: presenceTrue,
     };
 
     return validate(this, constraints);
@@ -64,6 +68,7 @@ export default class User {
       lastName: this.lastName,
       email: this.email,
       phoneNumber: this.phoneNumber,
+      gender: this.gender,
       password: this.password,
       updatedAt: this.updatedAt,
       createdAt: this.createdAt,

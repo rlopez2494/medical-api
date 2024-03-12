@@ -52,12 +52,7 @@ describe("Create patient", () => {
   })
 
   it("Throws an error if the data is invalid", async () => {
-    const invalidData = { ...validPatientData, firstName: null };
+    const invalidData = { ...validPatientData, weight: null };
     await expect(createPatient.execute({ data: invalidData })).rejects.toThrow("Invalid patient data");
-  });
-
-  it("Throws an error if a patient with the same citizenId already exists", async () => {
-    await createPatient.execute({ data: validPatientData });
-    await expect(createPatient.execute({ data: validPatientData })).rejects.toThrow("A patient with the same citizenId already exists");
   });
 })

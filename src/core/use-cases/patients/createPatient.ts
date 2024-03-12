@@ -16,11 +16,6 @@ export default class CreatePatient {
       throw new Error("Invalid patient data")
     }
 
-    const alreadyExistingPatient = !!(await this.patientsRepository.getPatientByCitizenId({ citizenId: newPatient.citizenId }))
-    if (alreadyExistingPatient) {
-      throw new Error("A patient with the same citizenId already exists");
-    }
-
     const savedPatient = await this.patientsRepository.createPatient({ data });
     return savedPatient;
   }

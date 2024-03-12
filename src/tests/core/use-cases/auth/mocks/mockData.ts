@@ -5,6 +5,7 @@ export const validNewUser = {
   lastName: "Lopez",
   email: "robert@hotmail.com",
   password: "abcd1234",
+  gender: "Male",
 
   updatedAt: null,
   createdAt: null,

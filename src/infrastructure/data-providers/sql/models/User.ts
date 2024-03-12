@@ -1,16 +1,14 @@
-import { DataTypes, Sequelize } from "sequelize";
+import { DataTypes } from "sequelize";
 import { sequelize as db } from "@/infrastructure/data-providers/sql/config/sequelize";
-import { v4 as uuidv4 } from 'uuid';
 
 // Had to use jwt here, because I couldn't use it in the use-case
 // I'll get back to this once we can generate an id previously to the beforeCreate hook
 import jwt from "jsonwebtoken";
 
-const newUUID = () => uuidv4();
 const User = db.define('User', {
   id: {
     type: DataTypes.UUID,
-    defaultValue: newUUID(), // This is not working, I had to import and use uuid in the createUser use-case
+    defaultValue: DataTypes.UUIDV4,
     primaryKey: true
   },
   firstName: {
@@ -27,7 +25,8 @@ const User = db.define('User', {
   },
   email: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
+    unique: true
   },
   password: {
     type: DataTypes.STRING,
@@ -36,6 +35,19 @@ const User = db.define('User', {
   phoneNumber: {
     type: DataTypes.STRING,
     allowNull: true
+  },
+  birthDate: {
+    type: DataTypes.DATE,
+    allowNull: true
+  },
+  citizenId: {
+    type: DataTypes.STRING,
+    allowNull: true,
+    unique: true
+  },
+  gender: {
+    type: DataTypes.STRING,
+    allowNull: false,
   },
   token: {
     type: DataTypes.STRING,
