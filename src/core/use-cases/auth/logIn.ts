@@ -26,7 +26,6 @@ export default class LogIn {
       password,
       hash: user.password,
     });
-    console.log("Is password valid? : ", isPasswordValid, "Password: ", password, "Hash: ", user.password)
 
     if (!isPasswordValid) {
       throw new Error("Invalid password");

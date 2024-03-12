@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/src/server.js",
   "scripts": {
-    "test": "jest --watchAll --verbose",
+    "test": "jest --runInBand --detectOpenHandles --forceExit --watchAll --verbose",
     "start": "nodemon --exec ts-node src/infrastructure/servers/express/config.ts"
   },
   "author": "",

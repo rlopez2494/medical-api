@@ -22,18 +22,16 @@ describe("Log In", () => {
   let usersRepository: UsersRepository;
   let passwordHasher: PasswordHasher;
 
-  beforeAll((done) => {
+  beforeAll(async () => {
     dotenvConfig();
-    sequelize.authenticate()
-      .then(() => done())
+    await sequelize.authenticate();
   });
 
-  afterAll((done) => {
-    sequelize.close()
-      .then(() => done())
+  afterAll(async () => {
+    await sequelize.close();
   })
 
-  beforeEach((done) => {
+  beforeEach(async () => {
     usersRepository = new SqlUsersRepository();
     passwordHasher = new BcryptPasswordHasher();
 
@@ -49,7 +47,7 @@ describe("Log In", () => {
     });
 
     // Recreating the table
-    sequelize.sync({ force: true }).then(() => done());
+    await sequelize.sync({ force: true });
   });
 
   it("should log in a valid user", async () => {
