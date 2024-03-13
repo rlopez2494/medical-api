@@ -4,5 +4,6 @@ import { Sequelize } from 'sequelize';
 export const sequelize = new Sequelize('medical-database', 'postgres', 'XT1032.motog', {
     host: 'localhost',
     port: 5432,
-    dialect: 'postgres'
+    dialect: 'postgres',
+    logging: false,
 });

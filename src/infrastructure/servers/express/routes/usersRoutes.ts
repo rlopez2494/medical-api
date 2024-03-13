@@ -9,6 +9,6 @@ router.get("/", async (req, res) => {
     const savedUser = await ExpressUsersController.signUp({ firstName, lastName, email, password });
     res.status(200).send(savedUser);
   } catch (error) {
-    console.log(error);
+    res.status(500).send({ error: error.message });
   }
 });

@@ -4,22 +4,25 @@ import SignUp from "@/core/use-cases/auth/signUp";
 
 // Interfaces
 import UsersRepository from "@/core/interfaces/repositories/UsersRepository";
+import DoctorsRepository from "@/core/interfaces/repositories/DoctorsRepository";
 import PasswordHasher from "@/core/interfaces/adapters/PasswordHasher";
 
 // Implementations
 import SqlUsersRepository from "@/infrastructure/data-providers/sql/SqlUsersRepository";
+import SqlDoctorsRepository from "@/infrastructure/data-providers/sql/SqlDoctorsRepository";
 import BcryptPasswordHasher from "@/infrastructure/adapters/BcryptPasswordHasher";
 
 import { sequelize } from "@/infrastructure/data-providers/sql/config/sequelize";
 import { config as dotenvConfig } from "dotenv";
 
 // Mock data (Creating a user prior to testing the login)
-import { validNewUser } from "./mocks/mockData";
+import { validNewUser, validNewUserRequestObject } from "./mocks/mockData";
 
 describe("Log In", () => {
   let logIn: LogIn;
   let signUp: SignUp;
   let usersRepository: UsersRepository;
+  let doctorsRepository: DoctorsRepository;
   let passwordHasher: PasswordHasher;
 
   beforeAll(async () => {
@@ -33,11 +36,13 @@ describe("Log In", () => {
 
   beforeEach(async () => {
     usersRepository = new SqlUsersRepository();
+    doctorsRepository = new SqlDoctorsRepository();
     passwordHasher = new BcryptPasswordHasher();
 
     // For the creation of a user throgh the signUp use-case first
     signUp = new SignUp({
       usersRepository,
+      doctorsRepository,
       passwordHasher,
     });
 
@@ -52,7 +57,7 @@ describe("Log In", () => {
 
   it("should log in a valid user", async () => {
     // Creating a user
-    await signUp.execute({ data: validNewUser });
+    await signUp.execute({ data: validNewUserRequestObject });
 
     const result = await logIn.execute({
       email: validNewUser.email,

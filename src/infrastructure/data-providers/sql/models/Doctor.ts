@@ -15,13 +15,15 @@ const Doctor = db.define('Doctor', {
     type: DataTypes.STRING,
     allowNull: false
   },
-  doctorId: {
+  medicalLicenseNumber: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
+    unique: true
   },
   userId: {
     type: DataTypes.UUID,
-    allowNull: false
+    allowNull: false,
+    unique: true
   }
 }, {});
 
